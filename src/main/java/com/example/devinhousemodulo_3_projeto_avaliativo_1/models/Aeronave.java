@@ -6,11 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Entity
 @AllArgsConstructor
@@ -23,8 +19,10 @@ public class Aeronave {
     private Long id;
     private String tipo;
     private int quantidade_fileras;
-    @ElementCollection
-    private Set<String> poltronas;
-//    @Transient
-//    private Set<String> poltronas = Stream.of("A","B","C","D","E","F").collect(Collectors.toCollection(HashSet::new));
+
+    @Transient
+    private List<Integer> fileiras_emergencia = Arrays.asList(5,6);
+
+    @Transient
+    private List<String> poltronas = Arrays.asList("A","B","C","D","E","F");
 }

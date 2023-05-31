@@ -21,16 +21,3 @@ INSERT INTO passageiro (cpf, nome, data_nascimento, classificacao, milhas)
 
 INSERT INTO aeronave (id, tipo, quantidade_fileras)
     VALUES (1, 'avião 1', 10);
-
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'A');
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'B');
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'C');
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'D');
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'E');
-INSERT INTO AERONAVE_POLTRONAS (aeronave_id, poltronas)
-    VALUES (1, 'F');
