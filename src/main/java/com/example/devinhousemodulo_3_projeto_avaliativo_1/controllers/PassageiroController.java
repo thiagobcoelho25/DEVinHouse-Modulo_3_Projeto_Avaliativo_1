@@ -1,10 +1,12 @@
 package com.example.devinhousemodulo_3_projeto_avaliativo_1.controllers;
 
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.mappers.PassageiroMapper;
+import com.example.devinhousemodulo_3_projeto_avaliativo_1.models.dto.PassageiroCheckinResponseDTO;
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.models.dto.PassageiroResponseDTO;
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.services.PassageiroService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +25,12 @@ public class PassageiroController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PassageiroResponseDTO>> getPassageiros(){
-        return ResponseEntity.ok(mapper.map(passageiroService.getAllPassageiros()));
+    public ResponseEntity<List<PassageiroCheckinResponseDTO>> getPassageiros(){
+        return ResponseEntity.ok(mapper.map_with_checkin(passageiroService.getAllPassageiros()));
+    }
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity<PassageiroResponseDTO> getPassageiroByCpf(@PathVariable String cpf){
+        return ResponseEntity.ok(mapper.map(passageiroService.getPassageiroByCpf(cpf)));
     }
 }

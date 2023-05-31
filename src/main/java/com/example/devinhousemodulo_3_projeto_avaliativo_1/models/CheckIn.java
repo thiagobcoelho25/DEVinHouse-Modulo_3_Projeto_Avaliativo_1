@@ -14,6 +14,8 @@ import java.util.UUID;
 @Data
 public class CheckIn {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID e_ticket;
     private String assento;
