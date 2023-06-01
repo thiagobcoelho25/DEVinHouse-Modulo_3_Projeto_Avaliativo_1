@@ -77,4 +77,11 @@ public class Handler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 
+    @ExceptionHandler(BusinessBadRequestException.class)
+    public ResponseEntity<StandardError> businessBadRequest(BusinessBadRequestException e, HttpServletRequest request){
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),request.getRequestURI(),
+                "Regra de negócio nao respeitada", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
 }

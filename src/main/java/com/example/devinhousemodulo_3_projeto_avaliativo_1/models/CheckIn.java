@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,10 +17,11 @@ public class CheckIn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID e_ticket;
     private String assento;
     private boolean malas_despachadas;
+    @Column(updatable=false)
+    @CreationTimestamp
     private LocalDateTime data_hora_confirmacao;
     @OneToOne
     @JoinColumn(name = "passageiro_id")
