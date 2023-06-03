@@ -25,5 +25,4 @@ public class Passageiro {
     private Integer milhas;
     @OneToOne(mappedBy = "passageiro")
     private CheckIn checkIn;
-
 }

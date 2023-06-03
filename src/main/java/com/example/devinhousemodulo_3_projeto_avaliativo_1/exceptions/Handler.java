@@ -65,7 +65,7 @@ public class Handler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<StandardError> entityNotFound(EntityNotFoundException e, HttpServletRequest request){
         StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),request.getRequestURI(),
-                "Falha De Busca de Entidade", e.getMessage());
+                    "Falha De Busca de Entidade", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
 

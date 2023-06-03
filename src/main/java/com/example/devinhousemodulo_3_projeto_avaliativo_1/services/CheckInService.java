@@ -14,14 +14,18 @@ import com.example.devinhousemodulo_3_projeto_avaliativo_1.repositories.CheckInR
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.repositories.PassageiroRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class CheckInService {
+
+    //private static final Logger LOGGER = LoggerFactory.getLogger(CheckInService.class);
 
     private final CheckInRepository checkInRepository;
     private final PassageiroRepository passageiroRepository;
@@ -47,7 +51,7 @@ public class CheckInService {
             throw new BusinessBadRequestException("Assento Não Existe!");
         }
 
-        if(checkInRepository.findCheckInByAssentoIgnoreCase(assento[1]).isPresent()){
+        if(checkInRepository.findCheckInByAssentoIgnoreCase(request.getAssento()).isPresent()){
             throw new BusinessRuleException("Assento Já Reservado!");
         }
 
@@ -71,7 +75,8 @@ public class CheckInService {
         passageiro.setMilhas(passageiro.getMilhas() + Classificacao.getValorFromEnum(passageiro.getClassificacao()));
         passageiroRepository.save(passageiro);
 
-        System.out.println("Confirmação feita pelo passageiro de CPF " + passageiro.getCpf() + " com e-ticket " + saved_checkIN.getE_ticket());
+        //LOGGER.info("Confirmação feita pelo passageiro de CPF " + passageiro.getCpf() + " com e-ticket " + saved_checkIN.getE_ticket());
+        log.info("Confirmação feita pelo passageiro de CPF " + passageiro.getCpf() + " com e-ticket " + saved_checkIN.getE_ticket());
 
         return mapper.map(saved_checkIN);
     }

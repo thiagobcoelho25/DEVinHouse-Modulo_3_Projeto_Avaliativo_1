@@ -18,6 +18,11 @@ INSERT INTO passageiro (cpf, nome, data_nascimento, classificacao, milhas)
     VALUES ('888.888.888-88', 'Janice Wheeler', '1961-08-07', 'BRONZE', 75);
 INSERT INTO passageiro (cpf, nome, data_nascimento, classificacao, milhas)
     VALUES ('999.999.999-99', 'Richard Burke', '1945-01-29', 'BRONZE', 50);
+INSERT INTO passageiro (cpf, nome, data_nascimento, classificacao, milhas)
+VALUES ('121.121.121-12', 'Guto', '2023-01-29', 'BRONZE', 50);
 
-INSERT INTO aeronave (id, tipo, quantidade_fileras)
-    VALUES (1, 'avião 1', 10);
+INSERT INTO aeronave (tipo, quantidade_fileras)
+    VALUES ('avião 1', 10);
+
+INSERT INTO check_in (aeronave_id, data_hora_confirmacao, passageiro_id, e_ticket, assento, malas_despachadas)
+VALUES (1, '2023-05-30 12:20:00', 4, RANDOM_UUID(), '2B', true);

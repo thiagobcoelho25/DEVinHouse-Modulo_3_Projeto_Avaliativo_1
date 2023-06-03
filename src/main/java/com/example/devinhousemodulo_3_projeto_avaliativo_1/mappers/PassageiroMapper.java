@@ -15,6 +15,7 @@ public interface PassageiroMapper {
     @Mapping(target = "dataNascimento", source = "data_nascimento")
     @Mapping(target = "eticket", source = "checkIn.e_ticket")
     @Mapping(target = "dataHoraConfirmacao", source = "checkIn.data_hora_confirmacao")
+    @Mapping(target = "assento", source = "checkIn.assento")
     PassageiroCheckinResponseDTO map_with_checkin(Passageiro source);
 
     @Mapping(target = "dataNascimento", source = "data_nascimento")
