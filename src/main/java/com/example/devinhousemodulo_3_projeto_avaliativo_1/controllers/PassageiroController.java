@@ -7,6 +7,10 @@ import com.example.devinhousemodulo_3_projeto_avaliativo_1.models.dto.Passageiro
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.models.dto.PassageiroResponseDTO;
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.services.CheckInService;
 import com.example.devinhousemodulo_3_projeto_avaliativo_1.services.PassageiroService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/passageiros")
+@Tag(name = "passageiros")
 public class PassageiroController {
 
     private final PassageiroService passageiroService;
@@ -27,11 +32,17 @@ public class PassageiroController {
         this.checkInService = checkInService;
     }
 
+    @Operation(summary = "Realiza requisição de Passageiros", method = "GET")
     @GetMapping
     public ResponseEntity<List<PassageiroCheckinResponseDTO>> getPassageiros(){
         return ResponseEntity.ok(mapper.map_with_checkin(passageiroService.getAllPassageiros()));
     }
 
+    @Operation(summary = "Realiza requisição de Passageiro Por CPF", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "404", description = "Passageiro Não Existe")
+    })
     @GetMapping("/{cpf}")
     public ResponseEntity<PassageiroResponseDTO> getPassageiroByCpf(@PathVariable String cpf){
         return ResponseEntity.ok(mapper.map(passageiroService.getPassageiroByCpf(cpf)));
