@@ -46,7 +46,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/thiagobcoelho25/DEVinHouse-Modulo_1_Projeto_Avaliativo_2>
+$ git clone <https://github.com/thiagobcoelho25/DEVinHouse-Modulo_3_Projeto_Avaliativo_1>
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd DEVinHouse-Modulo_3_Projeto_Avaliativo_1
